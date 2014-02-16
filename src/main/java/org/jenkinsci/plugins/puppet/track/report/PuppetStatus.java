@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * SnakeYAML databinding class for parsing puppet report.
+ *
  * @author Kohsuke Kawaguchi
  */
 public class PuppetStatus {

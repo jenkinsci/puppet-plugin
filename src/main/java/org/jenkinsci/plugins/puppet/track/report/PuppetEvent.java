@@ -3,6 +3,8 @@ package org.jenkinsci.plugins.puppet.track.report;
 import java.util.logging.Logger;
 
 /**
+ * SnakeYAML databinding class for parsing puppet report.
+ *
  * @author Kohsuke Kawaguchi
  */
 public class PuppetEvent {

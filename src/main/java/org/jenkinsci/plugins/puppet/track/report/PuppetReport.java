@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * SnakeYAML databinding class for parsing puppet report.
+ *
  * @author Kohsuke Kawaguchi
  */
 public class PuppetReport {
