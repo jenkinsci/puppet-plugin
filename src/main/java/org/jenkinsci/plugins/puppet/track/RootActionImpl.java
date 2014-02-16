@@ -51,7 +51,12 @@ public class RootActionImpl implements RootAction {
         // TODO: stapler YAML support
 
         PuppetReport r = PuppetReport.load(req.getReader());
+        processReport(r);
 
+        return HttpResponses.ok();
+    }
+
+    public void processReport(PuppetReport r) throws IOException {
         String host = r.host;
         if (host==null)     host = "unknown";
 
@@ -74,8 +79,6 @@ public class RootActionImpl implements RootAction {
                 }
             }
         }
-
-        return HttpResponses.ok();
     }
 
     /**
@@ -101,5 +104,9 @@ public class RootActionImpl implements RootAction {
             return df;
         }
         return null;
+    }
+
+    public static RootActionImpl get() {
+        return Jenkins.getInstance().getExtensionList(RootAction.class).get(RootActionImpl.class);
     }
 }
