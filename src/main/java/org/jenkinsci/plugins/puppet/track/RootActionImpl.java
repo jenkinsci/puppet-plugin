@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 /**
- * Exposed at /puppet to receive report submissions from puppet.
+ * Exposed at /puppet to receive report submissions from puppet over HTTP.
  *
  * @author Kohsuke Kawaguchi
  */
