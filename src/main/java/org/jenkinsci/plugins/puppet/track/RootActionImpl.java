@@ -47,7 +47,6 @@ public class RootActionImpl implements RootAction {
      */
     @RequirePOST
     public HttpResponse doReport(StaplerRequest req) throws IOException {
-        // TODO: permission check
         // TODO: stapler YAML support
 
         PuppetReport r = PuppetReport.load(req.getReader());
@@ -57,6 +56,8 @@ public class RootActionImpl implements RootAction {
     }
 
     public void processReport(PuppetReport r) throws IOException {
+        Jenkins.getInstance().checkPermission(DeploymentFacet.RECORD);
+
         String host = r.host;
         if (host==null)     host = "unknown";
 
