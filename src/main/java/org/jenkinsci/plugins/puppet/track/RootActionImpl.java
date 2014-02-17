@@ -58,11 +58,8 @@ public class RootActionImpl implements RootAction {
     public void processReport(PuppetReport r) throws IOException {
         Jenkins.getInstance().checkPermission(DeploymentFacet.RECORD);
 
-        String host = r.host;
-        if (host==null)     host = "unknown";
-
-        String env = r.environment;
-        if (env==null)      env = "unknown";
+        if (r.host==null)           r.host = "unknown";
+        if (r.environment==null)    r.environment = "unknown";
 
         for (PuppetStatus st : r.resource_statuses.values()) {
             // TODO: pluggability for matching resources
@@ -73,7 +70,7 @@ public class RootActionImpl implements RootAction {
                         String old = ev.getOldChecksum();
                         if (old!=null && jenkins.getFingerprintMap().get(old)==null)
                             old = null; // unknown fingerprint
-                        df.add(new HostRecord(host, env, st.title, old));
+                        df.add(new HostRecord(r.host, r.environment, st.title, old));
                     }
 
                     // TODO: record undeploy
