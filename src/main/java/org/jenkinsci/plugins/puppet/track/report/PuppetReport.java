@@ -6,6 +6,7 @@ import org.jenkinsci.plugins.puppet.track.PuppetReportProcessor;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.error.YAMLException;
 import org.yaml.snakeyaml.introspector.PropertyUtils;
 import org.yaml.snakeyaml.nodes.Node;
 
@@ -69,11 +70,18 @@ public class PuppetReport {
              */
             @Override
             protected Class<?> getClassForNode(Node node) {
+                Class c;
                 try {
-                    return super.getClassForNode(node);
+                    c = super.getClassForNode(node);
                 } catch (Exception e) {
-                    return node.getType();
+                    c = node.getType();
                 }
+
+                // for security reasons, restrict classes that YAML will try to instantiate
+                if (c==Object.class || c==String.class || c==Boolean.class || c==Integer.class)        return c;
+                if (!c.getName().startsWith("org.jenkinsci.plugins.puppet.track.report."))
+                    throw new YAMLException("Invalid class name: "+c.getName());
+                return c;
             }
         };
 
