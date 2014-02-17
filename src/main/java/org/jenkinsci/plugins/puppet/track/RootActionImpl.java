@@ -1,24 +1,16 @@
 package org.jenkinsci.plugins.puppet.track;
 
 import hudson.Extension;
-import hudson.Util;
-import hudson.model.Fingerprint;
 import hudson.model.RootAction;
 import hudson.util.HttpResponses;
-import jenkins.model.FingerprintFacet;
 import jenkins.model.Jenkins;
 import org.jenkinsci.plugins.deployment.DeploymentFacet;
-import org.jenkinsci.plugins.deployment.HostRecord;
-import org.jenkinsci.plugins.puppet.track.report.PuppetEvent;
 import org.jenkinsci.plugins.puppet.track.report.PuppetReport;
-import org.jenkinsci.plugins.puppet.track.report.PuppetStatus;
 import org.kohsuke.stapler.HttpResponse;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.interceptor.RequirePOST;
 
-import javax.inject.Inject;
 import java.io.IOException;
-import java.util.Collection;
 
 /**
  * Exposed at /puppet to receive report submissions from puppet over HTTP.
@@ -27,9 +19,6 @@ import java.util.Collection;
  */
 @Extension
 public class RootActionImpl implements RootAction {
-    @Inject
-    private Jenkins jenkins;
-
     public String getIconFileName() {
         return null;
     }
@@ -58,50 +47,12 @@ public class RootActionImpl implements RootAction {
     public void processReport(PuppetReport r) throws IOException {
         Jenkins.getInstance().checkPermission(DeploymentFacet.RECORD);
 
+        // fill in missing default values, if any.
         if (r.host==null)           r.host = "unknown";
         if (r.environment==null)    r.environment = "unknown";
 
-        for (PuppetStatus st : r.resource_statuses.values()) {
-            // TODO: pluggability for matching resources
-            if (st.resource_type.equals("File")) {
-                for (PuppetEvent ev : st.events) {
-                    PuppetDeploymentFacet df = getDeploymentFacet(ev.getNewChecksum());
-                    if (df!=null) {
-                        String old = ev.getOldChecksum();
-                        if (old!=null && jenkins.getFingerprintMap().get(old)==null)
-                            old = null; // unknown fingerprint
-                        df.add(new HostRecord(r.host, r.environment, st.title, old));
-                    }
-
-                    // TODO: record undeploy
-                }
-            }
-        }
-    }
-
-    /**
-     * Resolve {@link DeploymentFacet} to attach the record to, or null if there's none.
-     */
-    private PuppetDeploymentFacet getDeploymentFacet(String md5) throws IOException {
-        if (md5==null)  return null;
-
-        Fingerprint f = jenkins.getFingerprintMap().get(md5);
-        if (f==null)    return null;
-
-        Collection<FingerprintFacet> facets = f.getFacets();
-        PuppetDeploymentFacet df = findDeploymentFacet(facets);
-        if (df==null) {
-            df = new PuppetDeploymentFacet(f,System.currentTimeMillis());
-            facets.add(df);
-        }
-        return df;
-    }
-
-    private PuppetDeploymentFacet findDeploymentFacet(Collection<FingerprintFacet> facets) {
-        for (PuppetDeploymentFacet df : Util.filter(facets, PuppetDeploymentFacet.class)) {
-            return df;
-        }
-        return null;
+        for (PuppetReportProcessor prp : PuppetReportProcessor.all())
+            prp.process(r);
     }
 
     public static RootActionImpl get() {
