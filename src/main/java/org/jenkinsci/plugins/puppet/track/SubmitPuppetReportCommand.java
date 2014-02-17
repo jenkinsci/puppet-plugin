@@ -18,7 +18,7 @@ public class SubmitPuppetReportCommand extends CLICommand {
 
     @Override
     protected int run() throws Exception {
-        RootActionImpl.get().processReport(PuppetReport.load(stdin));
+        PuppetReport.load(stdin).process();
         return 0;
     }
 }

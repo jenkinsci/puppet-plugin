@@ -1,11 +1,15 @@
 package org.jenkinsci.plugins.puppet.track.report;
 
+import jenkins.model.Jenkins;
+import org.jenkinsci.plugins.deployment.DeploymentFacet;
+import org.jenkinsci.plugins.puppet.track.PuppetReportProcessor;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.introspector.PropertyUtils;
 import org.yaml.snakeyaml.nodes.Node;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.util.HashMap;
@@ -23,6 +27,20 @@ public class PuppetReport {
     public String configuration_version;
 
     public Map<String,PuppetStatus> resource_statuses = new HashMap<String, PuppetStatus>();
+
+    /**
+     * Process this report with {@link PuppetReportProcessor} and record all the fingerprints.
+     */
+    public void process() throws IOException {
+        Jenkins.getInstance().checkPermission(DeploymentFacet.RECORD);
+
+        // fill in missing default values, if any.
+        if (host==null)           host = "unknown";
+        if (environment==null)    environment = "unknown";
+
+        for (PuppetReportProcessor prp : PuppetReportProcessor.all())
+            prp.process(this);
+    }
 
     public static PuppetReport load(InputStream in) {
         return (PuppetReport)PARSER.load(in);
