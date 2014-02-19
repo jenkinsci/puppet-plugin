@@ -19,7 +19,6 @@ public class FileReportProcessor extends PuppetReportProcessor {
     @Override
     public void process(PuppetReport r) throws IOException {
         for (PuppetStatus st : r.resource_statuses.values()) {
-            // TODO: pluggability for matching resources
             if (st.resource_type.equals("File")) {
                 for (PuppetEvent ev : st.events) {
                     PuppetDeploymentFacet df = getDeploymentFacet(ev.getNewChecksum());
