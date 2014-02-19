@@ -1,5 +1,7 @@
 package org.jenkinsci.plugins.puppet.track.report;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
 import jenkins.model.Jenkins;
 import org.jenkinsci.plugins.deployment.DeploymentFacet;
 import org.jenkinsci.plugins.puppet.track.PuppetReportProcessor;
@@ -14,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -28,6 +31,21 @@ public class PuppetReport {
     public String configuration_version;
 
     public Map<String,PuppetStatus> resource_statuses = new HashMap<String, PuppetStatus>();
+
+    /**
+     * Lists up {@link PuppetStatus}es whose resource type matches the given type.
+     */
+    public Iterable<PuppetStatus> resources(final String type) {
+        return new Iterable<PuppetStatus>() {
+            public Iterator<PuppetStatus> iterator() {
+                return Iterators.filter(resource_statuses.values().iterator(),new Predicate<PuppetStatus>() {
+                    public boolean apply(PuppetStatus st) {
+                        return st.resource_type.equals(type);
+                    }
+                });
+            }
+        };
+    }
 
     /**
      * Process this report with {@link PuppetReportProcessor} and record all the fingerprints.

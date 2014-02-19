@@ -18,19 +18,17 @@ import java.io.IOException;
 public class FileReportProcessor extends PuppetReportProcessor {
     @Override
     public void process(PuppetReport r) throws IOException {
-        for (PuppetStatus st : r.resource_statuses.values()) {
-            if (st.resource_type.equals("File")) {
-                for (PuppetEvent ev : st.events) {
-                    PuppetDeploymentFacet df = getDeploymentFacet(ev.getNewChecksum());
-                    if (df!=null) {
-                        String old = ev.getOldChecksum();
-                        if (old!=null && Jenkins.getInstance().getFingerprintMap().get(old)==null)
-                            old = null; // unknown fingerprint
-                        df.add(new HostRecord(r.host, r.environment, st.title, old));
-                    }
-
-                    // TODO: record undeploy
+        for (PuppetStatus st : r.resources("File")) {
+            for (PuppetEvent ev : st.events) {
+                PuppetDeploymentFacet df = getDeploymentFacet(ev.getNewChecksum());
+                if (df!=null) {
+                    String old = ev.getOldChecksum();
+                    if (old!=null && Jenkins.getInstance().getFingerprintMap().get(old)==null)
+                        old = null; // unknown fingerprint
+                    df.add(new HostRecord(r.host, r.environment, st.title, old));
                 }
+
+                // TODO: record undeploy
             }
         }
     }
