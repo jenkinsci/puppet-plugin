@@ -2,6 +2,3 @@
   primitive to wait for the deployment in a spin loop
 
 - pipeline integration
-
-
-- support additional puppet resource types, even a custom task for tracking
