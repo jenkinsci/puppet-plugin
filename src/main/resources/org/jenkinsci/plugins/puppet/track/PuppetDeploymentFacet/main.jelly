@@ -1,4 +1,4 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-  <h2><img style="width:32px; height:32px" src="${resURL}/plugin/puppet/icon/32x32/puppet.png"/> Deployement</h2>
+  <h2><img style="width:32px; height:32px" src="${resURL}/plugin/puppet/icon/32x32/puppet.png"/> Deployment</h2>
   <st:include page="table.jelly" />
 </j:jelly>
