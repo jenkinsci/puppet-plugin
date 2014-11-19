@@ -19,11 +19,12 @@ public class PuppetEvent {
      */
     public String getNewChecksum() {
         /*
-            three possible messages (can contain additional suffix):
+            four possible messages (can contain additional suffix):
 
             return "defined content as '#{newvalue}'"
             return "undefined content from '#{currentvalue}'"
             return "content changed '#{currentvalue}' to '#{newvalue}'"
+            return "#{currentvalue}"
          */
         if (message.startsWith("defined content as"))
             return extractChecksum(1);
@@ -31,6 +32,8 @@ public class PuppetEvent {
             return null;
         if (message.startsWith("content changed"))
             return extractChecksum(3);
+        if (message.startsWith("{md5}"))
+            return extractChecksum(0);
 
         LOGGER.fine("Unexpected message: "+message);
         return null;
@@ -43,6 +46,8 @@ public class PuppetEvent {
             return extractChecksum(1);
         if (message.startsWith("content changed"))
             return extractChecksum(1);
+        if (message.startsWith("{md5}"))
+            return null;
 
         LOGGER.fine("Unexpected message: "+message);
         return null;
@@ -57,6 +62,16 @@ public class PuppetEvent {
             LOGGER.fine("Expected to find {md5} but got "+v);
             return null;    // failed to parse
         }
+    }
+
+    @Override
+    public String toString() {
+        return "PuppetEvent{" +
+                "name='" + name + '\'' +
+                ", message='" + message + '\'' +
+                ", property='" + property + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 
     private static final Logger LOGGER = Logger.getLogger(PuppetEvent.class.getName());

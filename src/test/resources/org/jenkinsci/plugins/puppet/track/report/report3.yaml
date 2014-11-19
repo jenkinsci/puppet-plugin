@@ -1,0 +1,1962 @@
+--- !ruby/object:Puppet::Transaction::Report
+  metrics: 
+    resources: !ruby/object:Puppet::Util::Metric
+      name: resources
+      label: Resources
+      values: 
+        - - total
+          - Total
+          - 36
+        - - skipped
+          - Skipped
+          - 0
+        - - failed
+          - Failed
+          - 0
+        - - failed_to_restart
+          - "Failed to restart"
+          - 0
+        - - restarted
+          - Restarted
+          - 0
+        - - changed
+          - Changed
+          - 4
+        - - out_of_sync
+          - "Out of sync"
+          - 4
+        - - scheduled
+          - Scheduled
+          - 0
+    time: !ruby/object:Puppet::Util::Metric
+      name: time
+      label: Time
+      values: 
+        - - schedule
+          - Schedule
+          - 0.000680954
+        - - host
+          - Host
+          - 0.017024552
+        - - file
+          - File
+          - 1.667015769
+        - - package
+          - Package
+          - 0.001156247
+        - - filebucket
+          - Filebucket
+          - 0.000114855
+        - - service
+          - Service
+          - 0.160721893
+        - - firewall
+          - Firewall
+          - 0.000416396
+        - - anchor
+          - Anchor
+          - 0.000204218
+        - - exec
+          - Exec
+          - 0.047964032000000004
+        - - yumrepo
+          - Yumrepo
+          - 0.0020710249999999998
+        - - group
+          - Group
+          - 0.000752494
+        - - user
+          - User
+          - 0.000442578
+        - - track
+          - Track
+          - 0.092079106
+        - - config_retrieval
+          - "Config retrieval"
+          - 1.830036373
+        - - total
+          - Total
+          - 3.820680492
+    changes: !ruby/object:Puppet::Util::Metric
+      name: changes
+      label: Changes
+      values: 
+        - - total
+          - Total
+          - 4
+    events: !ruby/object:Puppet::Util::Metric
+      name: events
+      label: Events
+      values: 
+        - - total
+          - Total
+          - 4
+        - - failure
+          - Failure
+          - 0
+        - - success
+          - Success
+          - 4
+  logs: 
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Loaded state in 0.01 seconds"
+      source: Puppet
+      time: 2014-11-18 22:41:31.999401 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - class
+        - java
+        - petclinic
+        - before
+      message: "requires Class[Epel]"
+      source: /Stage[main]/Java/before
+      time: 2014-11-18 22:41:32.000340 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 27
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - anchor
+        - "java::begin:"
+        - java
+        - "begin:"
+        - class
+        - petclinic
+        - before
+      message: "requires Package[java]"
+      source: "/Stage[main]/Java/Anchor[java::begin:]/before"
+      time: 2014-11-18 22:41:32.000696 +00:00
+      file: /etc/puppet/modules/java/manifests/init.pp
+      line: 85
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - package
+        - java
+        - class
+        - petclinic
+        - before
+      message: "requires Class[Java::Config]"
+      source: /Stage[main]/Java/Package[java]/before
+      time: 2014-11-18 22:41:32.000733 +00:00
+      file: /etc/puppet/modules/java/manifests/init.pp
+      line: 90
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - class
+        - "java::config"
+        - java
+        - config
+        - petclinic
+        - before
+      message: "requires Anchor[java::end]"
+      source: "/Stage[main]/Java::Config/before"
+      time: 2014-11-18 22:41:32.001061 +00:00
+      file: /etc/puppet/modules/java/manifests/init.pp
+      line: 92
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - class
+        - epel
+        - petclinic
+        - before
+      message: "requires Class[Tomcat]"
+      source: /Stage[main]/Epel/before
+      time: 2014-11-18 22:41:32.001306 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 29
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "epel::rpm_gpg_key"
+        - epel
+        - rpm_gpg_key
+        - epel-7
+        - class
+        - petclinic
+        - before
+      message: "requires Yumrepo[epel]"
+      source: "/Stage[main]/Epel/Epel::Rpm_gpg_key[EPEL-7]/before"
+      time: 2014-11-18 22:41:32.001544 +00:00
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 124
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "epel::rpm_gpg_key"
+        - epel
+        - rpm_gpg_key
+        - epel-7
+        - class
+        - petclinic
+        - before
+      message: "requires Yumrepo[epel-source]"
+      source: "/Stage[main]/Epel/Epel::Rpm_gpg_key[EPEL-7]/before"
+      time: 2014-11-18 22:41:32.001783 +00:00
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 124
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "epel::rpm_gpg_key"
+        - epel
+        - rpm_gpg_key
+        - epel-7
+        - class
+        - petclinic
+        - before
+      message: "requires Yumrepo[epel-debuginfo]"
+      source: "/Stage[main]/Epel/Epel::Rpm_gpg_key[EPEL-7]/before"
+      time: 2014-11-18 22:41:32.001874 +00:00
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 124
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "epel::rpm_gpg_key"
+        - epel
+        - rpm_gpg_key
+        - epel-7
+        - class
+        - petclinic
+        - before
+      message: "requires Yumrepo[epel-testing]"
+      source: "/Stage[main]/Epel/Epel::Rpm_gpg_key[EPEL-7]/before"
+      time: 2014-11-18 22:41:32.001874 +00:00
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 124
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "epel::rpm_gpg_key"
+        - epel
+        - rpm_gpg_key
+        - epel-7
+        - class
+        - petclinic
+        - before
+      message: "requires Yumrepo[epel-testing-source]"
+      source: "/Stage[main]/Epel/Epel::Rpm_gpg_key[EPEL-7]/before"
+      time: 2014-11-18 22:41:32.002167 +00:00
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 124
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "epel::rpm_gpg_key"
+        - epel
+        - rpm_gpg_key
+        - epel-7
+        - class
+        - petclinic
+        - before
+      message: "requires Yumrepo[epel-testing-debuginfo]"
+      source: "/Stage[main]/Epel/Epel::Rpm_gpg_key[EPEL-7]/before"
+      time: 2014-11-18 22:41:32.002335 +00:00
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 124
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "tomcat::instance"
+        - tomcat
+        - instance
+        - default
+        - class
+        - petclinic
+        - before
+      message: "requires Exec[workaround_force_replace_war]"
+      source: "/Stage[main]/Petclinic/Tomcat::Instance[default]/before"
+      time: 2014-11-18 22:41:32.002696 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 36
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - exec
+        - workaround_force_replace_war
+        - class
+        - petclinic
+        - before
+      message: "requires Tomcat::War[petclinic.war]"
+      source: /Stage[main]/Petclinic/Exec[workaround_force_replace_war]/before
+      time: 2014-11-18 22:41:32.003326 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 41
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "tomcat::war"
+        - tomcat
+        - war
+        - petclinic.war
+        - class
+        - petclinic
+        - before
+      message: "requires Track[/opt/apache-tomcat/webapps/petclinic.war]"
+      source: "/Stage[main]/Petclinic/Tomcat::War[petclinic.war]/before"
+      time: 2014-11-18 22:41:32.003608 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 44
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - track
+        - class
+        - petclinic
+        - before
+      message: "requires Tomcat::Service[default]"
+      source: /Stage[main]/Petclinic/Track[/opt/apache-tomcat/webapps/petclinic.war]/before
+      time: 2014-11-18 22:41:32.003725 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 47
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+        - petclinic
+        - require
+      message: "requires Package[iptables]"
+      source: "/Stage[main]/Firewall::Linux::Redhat/require"
+      time: 2014-11-18 22:41:32.003997 +00:00
+      file: /etc/puppet/modules/firewall/manifests/linux.pp
+      line: 33
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - service
+        - firewalld
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+        - petclinic
+        - before
+      message: "requires Package[iptables-services]"
+      source: "/Stage[main]/Firewall::Linux::Redhat/Service[firewalld]/before"
+      time: 2014-11-18 22:41:32.004209 +00:00
+      file: /etc/puppet/modules/firewall/manifests/linux/redhat.pp
+      line: 29
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - package
+        - iptables-services
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+        - petclinic
+        - before
+      message: "requires Service[iptables]"
+      source: "/Stage[main]/Firewall::Linux::Redhat/Package[iptables-services]/before"
+      time: 2014-11-18 22:41:32.004426 +00:00
+      file: /etc/puppet/modules/firewall/manifests/linux/redhat.pp
+      line: 34
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - service
+        - iptables
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+        - petclinic
+        - require
+      message: "requires File[/etc/sysconfig/iptables]"
+      source: "/Stage[main]/Firewall::Linux::Redhat/Service[iptables]/require"
+      time: 2014-11-18 22:41:32.004646 +00:00
+      file: /etc/puppet/modules/firewall/manifests/linux/redhat.pp
+      line: 42
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - exec
+        - import-epel-7
+        - "epel::rpm_gpg_key"
+        - epel
+        - rpm_gpg_key
+        - epel-7
+        - class
+        - petclinic
+        - require
+      message: "requires File[/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7]"
+      source: "/Stage[main]/Epel/Epel::Rpm_gpg_key[EPEL-7]/Exec[import-EPEL-7]/require"
+      time: 2014-11-18 22:41:32.004748 +00:00
+      file: /etc/puppet/modules/epel/manifests/rpm_gpg_key.pp
+      line: 27
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "tomcat::instance::source"
+        - tomcat
+        - instance
+        - source
+        - default
+        - "tomcat::instance"
+        - class
+        - petclinic
+        - require
+      message: "requires File[/opt/apache-tomcat]"
+      source: "/Stage[main]/Petclinic/Tomcat::Instance[default]/Tomcat::Instance::Source[default]/require"
+      time: 2014-11-18 22:41:32.005033 +00:00
+      file: /etc/puppet/modules/tomcat/manifests/instance.pp
+      line: 74
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "staging::extract"
+        - staging
+        - extract
+        - default-apache-tomcat-8.0.15.tar.gz
+        - "tomcat::instance::source"
+        - tomcat
+        - instance
+        - source
+        - default
+        - "tomcat::instance"
+        - class
+        - petclinic
+        - require
+      message: "requires Staging::File[apache-tomcat-8.0.15.tar.gz]"
+      source: "/Stage[main]/Petclinic/Tomcat::Instance[default]/Tomcat::Instance::Source[default]/Staging::Extract[default-apache-tomcat-8.0.15.tar.gz]/require"
+      time: 2014-11-18 22:41:32.005303 +00:00
+      file: /etc/puppet/modules/tomcat/manifests/instance/source.pp
+      line: 45
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - file
+        - class
+        - tomcat
+        - petclinic
+      message: "Autorequiring User[tomcat]"
+      source: /Stage[main]/Tomcat/File[/opt/apache-tomcat]
+      time: 2014-11-18 22:41:32.007400 +00:00
+      file: /etc/puppet/modules/tomcat/manifests/init.pp
+      line: 48
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - file
+        - class
+        - tomcat
+        - petclinic
+      message: "Autorequiring Group[tomcat]"
+      source: /Stage[main]/Tomcat/File[/opt/apache-tomcat]
+      time: 2014-11-18 22:41:32.007569 +00:00
+      file: /etc/puppet/modules/tomcat/manifests/init.pp
+      line: 48
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - user
+        - tomcat
+        - class
+        - petclinic
+      message: "Autorequiring Group[tomcat]"
+      source: /Stage[main]/Tomcat/User[tomcat]
+      time: 2014-11-18 22:41:32.007763 +00:00
+      file: /etc/puppet/modules/tomcat/manifests/init.pp
+      line: 55
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - firewall
+        - class
+        - petclinic
+      message: "Autorequiring Package[iptables]"
+      source: "/Firewall[100 allow http access]"
+      time: 2014-11-18 22:41:32.066697 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 58
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - firewall
+        - class
+        - petclinic
+      message: "Autorequiring Package[iptables-services]"
+      source: "/Firewall[100 allow http access]"
+      time: 2014-11-18 22:41:32.066994 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 58
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - file
+        - "staging::file"
+        - staging
+        - petclinic.war
+        - "tomcat::war"
+        - tomcat
+        - war
+        - class
+        - petclinic
+      message: "Autorequiring File[/opt/apache-tomcat]"
+      source: "/Stage[main]/Petclinic/Tomcat::War[petclinic.war]/Staging::File[petclinic.war]/File[/opt/apache-tomcat/webapps/petclinic.war]"
+      time: 2014-11-18 22:41:32.068498 +00:00
+      file: /etc/puppet/modules/staging/manifests/file.pp
+      line: 86
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - file
+        - "staging::file"
+        - staging
+        - apache-tomcat-8.0.15.tar.gz
+        - "tomcat::instance::source"
+        - tomcat
+        - instance
+        - source
+        - default
+        - "tomcat::instance"
+        - class
+        - petclinic
+      message: "Autorequiring File[/opt/staging]"
+      source: "/Stage[main]/Petclinic/Tomcat::Instance[default]/Tomcat::Instance::Source[default]/Staging::File[apache-tomcat-8.0.15.tar.gz]/File[/opt/staging/tomcat]"
+      time: 2014-11-18 22:41:32.069545 +00:00
+      file: /etc/puppet/modules/staging/manifests/file.pp
+      line: 39
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - exec
+        - "staging::file"
+        - staging
+        - file
+        - apache-tomcat-8.0.15.tar.gz
+        - "tomcat::instance::source"
+        - tomcat
+        - instance
+        - source
+        - default
+        - "tomcat::instance"
+        - class
+        - petclinic
+      message: "Autorequiring File[/opt/staging/tomcat]"
+      source: "/Stage[main]/Petclinic/Tomcat::Instance[default]/Tomcat::Instance::Source[default]/Staging::File[apache-tomcat-8.0.15.tar.gz]/Exec[/opt/staging/tomcat/apache-tomcat-8.0.15.tar.gz]"
+      time: 2014-11-18 22:41:32.070294 +00:00
+      file: /etc/puppet/modules/staging/manifests/file.pp
+      line: 93
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - exec
+        - "staging::extract"
+        - staging
+        - extract
+        - default-apache-tomcat-8.0.15.tar.gz
+        - "tomcat::instance::source"
+        - tomcat
+        - instance
+        - source
+        - default
+        - "tomcat::instance"
+        - class
+        - petclinic
+      message: "Autorequiring File[/opt/apache-tomcat]"
+      source: "/Stage[main]/Petclinic/Tomcat::Instance[default]/Tomcat::Instance::Source[default]/Staging::Extract[default-apache-tomcat-8.0.15.tar.gz]/Exec[extract default-apache-tomcat-8.0.15.tar.gz]"
+      time: 2014-11-18 22:41:32.071505 +00:00
+      file: /etc/puppet/modules/staging/manifests/extract.pp
+      line: 108
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - exec
+        - "staging::extract"
+        - staging
+        - extract
+        - default-apache-tomcat-8.0.15.tar.gz
+        - "tomcat::instance::source"
+        - tomcat
+        - instance
+        - source
+        - default
+        - "tomcat::instance"
+        - class
+        - petclinic
+      message: "Autorequiring User[tomcat]"
+      source: "/Stage[main]/Petclinic/Tomcat::Instance[default]/Tomcat::Instance::Source[default]/Staging::Extract[default-apache-tomcat-8.0.15.tar.gz]/Exec[extract default-apache-tomcat-8.0.15.tar.gz]"
+      time: 2014-11-18 22:41:32.071735 +00:00
+      file: /etc/puppet/modules/staging/manifests/extract.pp
+      line: 108
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym info
+      tags: 
+        - info
+      message: "Applying configuration version '1416350490'"
+      source: Puppet
+      time: 2014-11-18 22:41:32.082714 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Prefetching parsed resources for host"
+      source: Puppet
+      time: 2014-11-18 22:41:32.085600 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - host
+        - jenkins.localdomain
+        - class
+      message: created
+      source: /Stage[main]/Main/Host[jenkins.localdomain]/ensure
+      time: 2014-11-18 22:41:32.086470 +00:00
+      file: /tmp/vagrant-puppet-3/manifests/default-jenkins.pp
+      line: 8
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Flushing host provider target /etc/hosts"
+      source: Puppet
+      time: 2014-11-18 22:41:32.086614 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym info
+      tags: 
+        - info
+      message: "Computing checksum on file /etc/hosts"
+      source: Puppet
+      time: 2014-11-18 22:41:32.087919 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - host
+        - jenkins.localdomain
+        - class
+      message: "The container Class[Main] will propagate my refresh event"
+      source: /Stage[main]/Main/Host[jenkins.localdomain]
+      time: 2014-11-18 22:41:32.103331 +00:00
+      file: /tmp/vagrant-puppet-3/manifests/default-jenkins.pp
+      line: 8
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Prefetching yum resources for package"
+      source: Puppet
+      time: 2014-11-18 22:41:32.108778 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing '/bin/rpm --version'"
+      source: Puppet
+      time: 2014-11-18 22:41:32.108990 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing '/bin/rpm -qa --nosignature --nodigest --qf '%{NAME} %|EPOCH?{%{EPOCH}}:{0}| %{VERSION} %{RELEASE} %{ARCH}\x5cn''"
+      source: Puppet
+      time: 2014-11-18 22:41:32.119772 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing '/bin/systemctl is-active firewalld'"
+      source: Puppet
+      time: 2014-11-18 22:41:32.181754 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing '/bin/systemctl is-enabled firewalld'"
+      source: Puppet
+      time: 2014-11-18 22:41:32.191807 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing '/bin/systemctl is-active iptables'"
+      source: Puppet
+      time: 2014-11-18 22:41:32.206753 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing '/bin/systemctl is-enabled iptables'"
+      source: Puppet
+      time: 2014-11-18 22:41:32.267785 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Prefetching iptables resources for firewall"
+      source: Puppet
+      time: 2014-11-18 22:41:32.327245 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "[prefetch(resources)]"
+      source: "Puppet::Type::Firewall::ProviderIptables"
+      time: 2014-11-18 22:41:32.327434 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "[instances]"
+      source: "Puppet::Type::Firewall::ProviderIptables"
+      time: 2014-11-18 22:41:32.327491 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing '/sbin/iptables-save'"
+      source: Puppet
+      time: 2014-11-18 22:41:32.327776 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing check 'rpm -q gpg-pubkey-$(echo $(gpg --throw-keyids < /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7) | cut --characters=11-18 | tr '[A-Z]' '[a-z]')'"
+      source: "Exec[import-EPEL-7](provider=posix)"
+      time: 2014-11-18 22:41:32.451771 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing 'rpm -q gpg-pubkey-$(echo $(gpg --throw-keyids < /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7) | cut --characters=11-18 | tr '[A-Z]' '[a-z]')'"
+      source: Puppet
+      time: 2014-11-18 22:41:32.452116 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - exec
+        - import-epel-7
+        - "epel::rpm_gpg_key"
+        - epel
+        - rpm_gpg_key
+        - epel-7
+        - class
+        - petclinic
+        - unless
+      message: gpg-pubkey-352c64e5-52ae6884
+      source: "/Stage[main]/Epel/Epel::Rpm_gpg_key[EPEL-7]/Exec[import-EPEL-7]/unless"
+      time: 2014-11-18 22:41:32.473125 +00:00
+      file: /etc/puppet/modules/epel/manifests/rpm_gpg_key.pp
+      line: 27
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Prefetching inifile resources for yumrepo"
+      source: Puppet
+      time: 2014-11-18 22:41:32.474094 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - completed_class
+        - main
+      message: "The container Stage[main] will propagate my refresh event"
+      source: Class[Main]
+      time: 2014-11-18 22:41:32.482328 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing check 'test \x22$(ls -A /opt/apache-tomcat)\x22'"
+      source: "Exec[extract default-apache-tomcat-8.0.15.tar.gz](provider=posix)"
+      time: 2014-11-18 22:41:32.489754 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing 'test \x22$(ls -A /opt/apache-tomcat)\x22'"
+      source: Puppet
+      time: 2014-11-18 22:41:32.490020 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing 'rm /opt/apache-tomcat/webapps/petclinic.war  || :'"
+      source: "Exec[workaround_force_replace_war](provider=posix)"
+      time: 2014-11-18 22:41:32.504073 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing 'rm /opt/apache-tomcat/webapps/petclinic.war  || :'"
+      source: Puppet
+      time: 2014-11-18 22:41:32.504333 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - workaround_force_replace_war
+        - class
+        - petclinic
+      message: "executed successfully"
+      source: /Stage[main]/Petclinic/Exec[workaround_force_replace_war]/returns
+      time: 2014-11-18 22:41:32.516412 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 41
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - exec
+        - workaround_force_replace_war
+        - class
+        - petclinic
+      message: "The container Class[Petclinic] will propagate my refresh event"
+      source: /Stage[main]/Petclinic/Exec[workaround_force_replace_war]
+      time: 2014-11-18 22:41:32.516775 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 41
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - "staging::file"
+        - staging
+        - petclinic.war
+        - "tomcat::war"
+        - tomcat
+        - war
+        - class
+        - petclinic
+      message: "defined content as '{md5}808480f0ffd870fe9af90c94d060e744'"
+      source: "/Stage[main]/Petclinic/Tomcat::War[petclinic.war]/Staging::File[petclinic.war]/File[/opt/apache-tomcat/webapps/petclinic.war]/ensure"
+      time: 2014-11-18 22:41:34.158402 +00:00
+      file: /etc/puppet/modules/staging/manifests/file.pp
+      line: 86
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - file
+        - "staging::file"
+        - staging
+        - petclinic.war
+        - "tomcat::war"
+        - tomcat
+        - war
+        - class
+        - petclinic
+      message: "The container Staging::File[petclinic.war] will propagate my refresh event"
+      source: "/Stage[main]/Petclinic/Tomcat::War[petclinic.war]/Staging::File[petclinic.war]/File[/opt/apache-tomcat/webapps/petclinic.war]"
+      time: 2014-11-18 22:41:34.158911 +00:00
+      file: /etc/puppet/modules/staging/manifests/file.pp
+      line: 86
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "completed_staging::file"
+        - completed_staging
+        - file
+        - petclinic.war
+      message: "The container Tomcat::War[petclinic.war] will propagate my refresh event"
+      source: "Staging::File[petclinic.war]"
+      time: 2014-11-18 22:41:34.159753 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - "completed_tomcat::war"
+        - completed_tomcat
+        - war
+        - petclinic.war
+      message: "The container Class[Petclinic] will propagate my refresh event"
+      source: "Tomcat::War[petclinic.war]"
+      time: 2014-11-18 22:41:34.160242 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - track
+        - class
+        - petclinic
+      message: "{md5}808480f0ffd870fe9af90c94d060e744"
+      source: /Stage[main]/Petclinic/Track[/opt/apache-tomcat/webapps/petclinic.war]/md5
+      time: 2014-11-18 22:41:34.252416 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 47
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - track
+        - class
+        - petclinic
+      message: "The container Class[Petclinic] will propagate my refresh event"
+      source: /Stage[main]/Petclinic/Track[/opt/apache-tomcat/webapps/petclinic.war]
+      time: 2014-11-18 22:41:34.252779 +00:00
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 47
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Executing 'ps aux | grep 'catalina.base=/opt/apache-tomcat ' | grep -v grep'"
+      source: Puppet
+      time: 2014-11-18 22:41:34.254275 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+        - completed_class
+        - petclinic
+      message: "The container Stage[main] will propagate my refresh event"
+      source: Class[Petclinic]
+      time: 2014-11-18 22:41:34.272583 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Finishing transaction 29874680"
+      source: Puppet
+      time: 2014-11-18 22:41:34.274638 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Storing state"
+      source: Puppet
+      time: 2014-11-18 22:41:34.274728 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym debug
+      tags: 
+        - debug
+      message: "Stored state in 0.01 seconds"
+      source: Puppet
+      time: 2014-11-18 22:41:34.287302 +00:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+      message: "Finished catalog run in 2.30 seconds"
+      source: Puppet
+      time: 2014-11-18 22:41:34.287431 +00:00
+  resource_statuses: 
+    Schedule[daily]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[daily]
+      file: 
+      line: 
+      evaluation_time: 0.000117386
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - daily
+      time: 2014-11-18 22:41:32.083946 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: daily
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[daily]
+    Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[monthly]
+      file: 
+      line: 
+      evaluation_time: 5.4102e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - monthly
+      time: 2014-11-18 22:41:32.084197 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: monthly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[monthly]
+    Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[hourly]
+      file: 
+      line: 
+      evaluation_time: 6.3813e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - hourly
+      time: 2014-11-18 22:41:32.084339 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: hourly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[hourly]
+    Host[jenkins.localdomain]: !ruby/object:Puppet::Resource::Status
+      resource: Host[jenkins.localdomain]
+      file: /tmp/vagrant-puppet-3/manifests/default-jenkins.pp
+      line: 8
+      evaluation_time: 0.017024552
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - host
+        - jenkins.localdomain
+        - class
+      time: 2014-11-18 22:41:32.086061 +00:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym host_created
+          status: success
+          time: 2014-11-18 22:41:32.086368 +00:00
+      out_of_sync: true
+      changed: true
+      resource_type: Host
+      title: jenkins.localdomain
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Host[jenkins.localdomain]
+    File[/opt/staging]: !ruby/object:Puppet::Resource::Status
+      resource: File[/opt/staging]
+      file: /etc/puppet/modules/staging/manifests/init.pp
+      line: 28
+      evaluation_time: 0.000432126
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - file
+        - class
+        - staging
+        - "tomcat::instance::source"
+        - tomcat
+        - instance
+        - source
+        - default
+        - "tomcat::instance"
+        - petclinic
+      time: 2014-11-18 22:41:32.105786 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: File
+      title: /opt/staging
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Staging
+        - File[/opt/staging]
+    Schedule[never]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[never]
+      file: 
+      line: 
+      evaluation_time: 0.000119925
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - never
+      time: 2014-11-18 22:41:32.107259 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: never
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[never]
+    Package[iptables]: !ruby/object:Puppet::Resource::Status
+      resource: Package[iptables]
+      file: /etc/puppet/modules/firewall/manifests/linux.pp
+      line: 24
+      evaluation_time: 0.000409081
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - iptables
+        - class
+        - "firewall::linux"
+        - firewall
+        - linux
+        - petclinic
+      time: 2014-11-18 22:41:32.177849 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: iptables
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux"
+        - Package[iptables]
+    File[/etc/sysconfig/iptables]: !ruby/object:Puppet::Resource::Status
+      resource: File[/etc/sysconfig/iptables]
+      file: /etc/puppet/modules/firewall/manifests/linux/redhat.pp
+      line: 49
+      evaluation_time: 0.000464783
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - file
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+        - petclinic
+      time: 2014-11-18 22:41:32.178921 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: File
+      title: /etc/sysconfig/iptables
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux::Redhat"
+        - File[/etc/sysconfig/iptables]
+    Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Filebucket[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000114855
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - filebucket
+        - puppet
+      time: 2014-11-18 22:41:32.180826 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Filebucket
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Filebucket[puppet]
+    Service[firewalld]: !ruby/object:Puppet::Resource::Status
+      resource: Service[firewalld]
+      file: /etc/puppet/modules/firewall/manifests/linux/redhat.pp
+      line: 29
+      evaluation_time: 0.023363558
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - service
+        - firewalld
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+        - petclinic
+      time: 2014-11-18 22:41:32.181497 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Service
+      title: firewalld
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux::Redhat"
+        - Service[firewalld]
+    Package[iptables-services]: !ruby/object:Puppet::Resource::Status
+      resource: Package[iptables-services]
+      file: /etc/puppet/modules/firewall/manifests/linux/redhat.pp
+      line: 34
+      evaluation_time: 0.000371518
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - iptables-services
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+        - petclinic
+      time: 2014-11-18 22:41:32.205753 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: iptables-services
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux::Redhat"
+        - Package[iptables-services]
+    Service[iptables]: !ruby/object:Puppet::Resource::Status
+      resource: Service[iptables]
+      file: /etc/puppet/modules/firewall/manifests/linux/redhat.pp
+      line: 42
+      evaluation_time: 0.119807196
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - service
+        - iptables
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+        - petclinic
+      time: 2014-11-18 22:41:32.206529 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Service
+      title: iptables
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux::Redhat"
+        - Service[iptables]
+    "Firewall[100 allow http access]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[100 allow http access]"
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 58
+      evaluation_time: 0.000416396
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - firewall
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.387855 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Firewall
+      title: "100 allow http access"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Petclinic
+        - "Firewall[100 allow http access]"
+    Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[weekly]
+      file: 
+      line: 
+      evaluation_time: 0.000153312
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - weekly
+      time: 2014-11-18 22:41:32.388507 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: weekly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[weekly]
+    "Anchor[java::begin:]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[java::begin:]"
+      file: /etc/puppet/modules/java/manifests/init.pp
+      line: 85
+      evaluation_time: 0.000118455
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "java::begin:"
+        - java
+        - "begin:"
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.389041 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "java::begin:"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Java
+        - "Anchor[java::begin:]"
+    Package[java]: !ruby/object:Puppet::Resource::Status
+      resource: Package[java]
+      file: /etc/puppet/modules/java/manifests/init.pp
+      line: 90
+      evaluation_time: 0.000375648
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - java
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.423468 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: java
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Java
+        - Package[java]
+    "Anchor[java::end]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[java::end]"
+      file: /etc/puppet/modules/java/manifests/init.pp
+      line: 93
+      evaluation_time: 8.5763e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "java::end"
+        - java
+        - end
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.424600 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "java::end"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Java
+        - "Anchor[java::end]"
+    File[/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7]: !ruby/object:Puppet::Resource::Status
+      resource: File[/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7]
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 119
+      evaluation_time: 0.025180826
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - file
+        - class
+        - epel
+        - petclinic
+      time: 2014-11-18 22:41:32.425532 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: File
+      title: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Epel
+        - File[/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7]
+    Exec[import-EPEL-7]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[import-EPEL-7]
+      file: /etc/puppet/modules/epel/manifests/rpm_gpg_key.pp
+      line: 27
+      evaluation_time: 0.022181146
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - import-epel-7
+        - "epel::rpm_gpg_key"
+        - epel
+        - rpm_gpg_key
+        - epel-7
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.451374 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: import-EPEL-7
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Epel
+        - "Epel::Rpm_gpg_key[EPEL-7]"
+        - Exec[import-EPEL-7]
+    Yumrepo[epel-testing-debuginfo]: !ruby/object:Puppet::Resource::Status
+      resource: Yumrepo[epel-testing-debuginfo]
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 68
+      evaluation_time: 0.000334697
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - yumrepo
+        - epel-testing-debuginfo
+        - class
+        - epel
+        - petclinic
+      time: 2014-11-18 22:41:32.478075 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Yumrepo
+      title: epel-testing-debuginfo
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Epel
+        - Yumrepo[epel-testing-debuginfo]
+    Yumrepo[epel-source]: !ruby/object:Puppet::Resource::Status
+      resource: Yumrepo[epel-source]
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 111
+      evaluation_time: 0.00026116
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - yumrepo
+        - epel-source
+        - class
+        - epel
+        - petclinic
+      time: 2014-11-18 22:41:32.478753 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Yumrepo
+      title: epel-source
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Epel
+        - Yumrepo[epel-source]
+    Yumrepo[epel]: !ruby/object:Puppet::Resource::Status
+      resource: Yumrepo[epel]
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 89
+      evaluation_time: 0.000225501
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - yumrepo
+        - epel
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.479267 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Yumrepo
+      title: epel
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Epel
+        - Yumrepo[epel]
+    Yumrepo[epel-testing-source]: !ruby/object:Puppet::Resource::Status
+      resource: Yumrepo[epel-testing-source]
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 78
+      evaluation_time: 0.000213719
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - yumrepo
+        - epel-testing-source
+        - class
+        - epel
+        - petclinic
+      time: 2014-11-18 22:41:32.479753 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Yumrepo
+      title: epel-testing-source
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Epel
+        - Yumrepo[epel-testing-source]
+    Yumrepo[epel-debuginfo]: !ruby/object:Puppet::Resource::Status
+      resource: Yumrepo[epel-debuginfo]
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 100
+      evaluation_time: 0.000218015
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - yumrepo
+        - epel-debuginfo
+        - class
+        - epel
+        - petclinic
+      time: 2014-11-18 22:41:32.480213 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Yumrepo
+      title: epel-debuginfo
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Epel
+        - Yumrepo[epel-debuginfo]
+    Yumrepo[epel-testing]: !ruby/object:Puppet::Resource::Status
+      resource: Yumrepo[epel-testing]
+      file: /etc/puppet/modules/epel/manifests/init.pp
+      line: 58
+      evaluation_time: 0.000817933
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - yumrepo
+        - epel-testing
+        - class
+        - epel
+        - petclinic
+      time: 2014-11-18 22:41:32.480659 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Yumrepo
+      title: epel-testing
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Epel
+        - Yumrepo[epel-testing]
+    Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000172416
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - puppet
+      time: 2014-11-18 22:41:32.481720 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[puppet]
+    Group[tomcat]: !ruby/object:Puppet::Resource::Status
+      resource: Group[tomcat]
+      file: /etc/puppet/modules/tomcat/manifests/init.pp
+      line: 61
+      evaluation_time: 0.000752494
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - group
+        - tomcat
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.483377 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Group
+      title: tomcat
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Tomcat
+        - Group[tomcat]
+    User[tomcat]: !ruby/object:Puppet::Resource::Status
+      resource: User[tomcat]
+      file: /etc/puppet/modules/tomcat/manifests/init.pp
+      line: 55
+      evaluation_time: 0.000442578
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - user
+        - tomcat
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.484557 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: User
+      title: tomcat
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Tomcat
+        - User[tomcat]
+    File[/opt/apache-tomcat]: !ruby/object:Puppet::Resource::Status
+      resource: File[/opt/apache-tomcat]
+      file: /etc/puppet/modules/tomcat/manifests/init.pp
+      line: 48
+      evaluation_time: 0.00038948
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - file
+        - class
+        - tomcat
+        - petclinic
+      time: 2014-11-18 22:41:32.485375 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: File
+      title: /opt/apache-tomcat
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Tomcat
+        - File[/opt/apache-tomcat]
+    File[/opt/staging/tomcat]: !ruby/object:Puppet::Resource::Status
+      resource: File[/opt/staging/tomcat]
+      file: /etc/puppet/modules/staging/manifests/file.pp
+      line: 39
+      evaluation_time: 0.000243386
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - file
+        - "staging::file"
+        - staging
+        - apache-tomcat-8.0.15.tar.gz
+        - "tomcat::instance::source"
+        - tomcat
+        - instance
+        - source
+        - default
+        - "tomcat::instance"
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.487525 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: File
+      title: /opt/staging/tomcat
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Petclinic
+        - "Tomcat::Instance[default]"
+        - "Tomcat::Instance::Source[default]"
+        - "Staging::File[apache-tomcat-8.0.15.tar.gz]"
+        - File[/opt/staging/tomcat]
+    Exec[/opt/staging/tomcat/apache-tomcat-8.0.15.tar.gz]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[/opt/staging/tomcat/apache-tomcat-8.0.15.tar.gz]
+      file: /etc/puppet/modules/staging/manifests/file.pp
+      line: 93
+      evaluation_time: 0.000203682
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - "staging::file"
+        - staging
+        - file
+        - apache-tomcat-8.0.15.tar.gz
+        - "tomcat::instance::source"
+        - tomcat
+        - instance
+        - source
+        - default
+        - "tomcat::instance"
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.488273 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: /opt/staging/tomcat/apache-tomcat-8.0.15.tar.gz
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Petclinic
+        - "Tomcat::Instance[default]"
+        - "Tomcat::Instance::Source[default]"
+        - "Staging::File[apache-tomcat-8.0.15.tar.gz]"
+        - Exec[/opt/staging/tomcat/apache-tomcat-8.0.15.tar.gz]
+    "Exec[extract default-apache-tomcat-8.0.15.tar.gz]": !ruby/object:Puppet::Resource::Status
+      resource: "Exec[extract default-apache-tomcat-8.0.15.tar.gz]"
+      file: /etc/puppet/modules/staging/manifests/extract.pp
+      line: 108
+      evaluation_time: 0.012303308
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - "staging::extract"
+        - staging
+        - extract
+        - default-apache-tomcat-8.0.15.tar.gz
+        - "tomcat::instance::source"
+        - tomcat
+        - instance
+        - source
+        - default
+        - "tomcat::instance"
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.489518 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: "extract default-apache-tomcat-8.0.15.tar.gz"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Petclinic
+        - "Tomcat::Instance[default]"
+        - "Tomcat::Instance::Source[default]"
+        - "Staging::Extract[default-apache-tomcat-8.0.15.tar.gz]"
+        - "Exec[extract default-apache-tomcat-8.0.15.tar.gz]"
+    Exec[workaround_force_replace_war]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[workaround_force_replace_war]
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 41
+      evaluation_time: 0.013275896
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - exec
+        - workaround_force_replace_war
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.503407 +00:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: returns
+          previous_value: !ruby/sym notrun
+          desired_value: 
+            - "0"
+          historical_value: 
+          message: "executed successfully"
+          name: !ruby/sym executed_command
+          status: success
+          time: 2014-11-18 22:41:32.503768 +00:00
+      out_of_sync: true
+      changed: true
+      resource_type: Exec
+      title: workaround_force_replace_war
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Petclinic
+        - Exec[workaround_force_replace_war]
+    File[/opt/apache-tomcat/webapps/petclinic.war]: !ruby/object:Puppet::Resource::Status
+      resource: File[/opt/apache-tomcat/webapps/petclinic.war]
+      file: /etc/puppet/modules/staging/manifests/file.pp
+      line: 86
+      evaluation_time: 1.640305168
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - "staging::file"
+        - staging
+        - petclinic.war
+        - "tomcat::war"
+        - tomcat
+        - war
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:32.518448 +00:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym file
+          historical_value: 
+          message: "defined content as '{md5}808480f0ffd870fe9af90c94d060e744'"
+          name: !ruby/sym file_created
+          status: success
+          time: 2014-11-18 22:41:33.664062 +00:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: /opt/apache-tomcat/webapps/petclinic.war
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Petclinic
+        - "Tomcat::War[petclinic.war]"
+        - "Staging::File[petclinic.war]"
+        - File[/opt/apache-tomcat/webapps/petclinic.war]
+    Track[/opt/apache-tomcat/webapps/petclinic.war]: !ruby/object:Puppet::Resource::Status
+      resource: Track[/opt/apache-tomcat/webapps/petclinic.war]
+      file: /tmp/vagrant-puppet-3/modules-0/petclinic/manifests/init.pp
+      line: 47
+      evaluation_time: 0.092079106
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - track
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:34.160586 +00:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: md5
+          previous_value: !ruby/sym notcomputed
+          desired_value: !ruby/sym computed
+          historical_value: 
+          message: "{md5}808480f0ffd870fe9af90c94d060e744"
+          name: !ruby/sym md5_changed
+          status: success
+          time: 2014-11-18 22:41:34.160753 +00:00
+      out_of_sync: true
+      changed: true
+      resource_type: Track
+      title: /opt/apache-tomcat/webapps/petclinic.war
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Petclinic
+        - Track[/opt/apache-tomcat/webapps/petclinic.war]
+    Service[tomcat-default]: !ruby/object:Puppet::Resource::Status
+      resource: Service[tomcat-default]
+      file: /etc/puppet/modules/tomcat/manifests/service.pp
+      line: 134
+      evaluation_time: 0.017551139
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - service
+        - tomcat-default
+        - "tomcat::service"
+        - tomcat
+        - default
+        - class
+        - petclinic
+      time: 2014-11-18 22:41:34.253865 +00:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Service
+      title: tomcat-default
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Petclinic
+        - "Tomcat::Service[default]"
+        - Service[tomcat-default]
+  host: dragon
+  time: 2014-11-18 22:41:31.983667 +00:00
+  kind: apply
+  report_format: 4
+  puppet_version: "3.7.2"
+  configuration_version: 1416350490
+  transaction_uuid: e84051ed-bbcb-4b04-8c9d-a9dc8a7d54d5
+  environment: production
+  status: changed
