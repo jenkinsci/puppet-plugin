@@ -10,6 +10,8 @@ import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.interceptor.RequirePOST;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Exposed at /puppet to receive report submissions from puppet over HTTP.
@@ -18,6 +20,8 @@ import java.io.IOException;
  */
 @Extension
 public class RootActionImpl implements RootAction {
+    private final static Logger LOGGER = Logger.getLogger(RootActionImpl.class.getName());
+
     public String getIconFileName() {
         return null;
     }
@@ -35,6 +39,7 @@ public class RootActionImpl implements RootAction {
      */
     @RequirePOST
     public HttpResponse doReport(StaplerRequest req) throws IOException {
+        LOGGER.log(Level.FINE, "Process report");
         // TODO: stapler YAML support
 
         PuppetReport.load(req.getReader()).process();
