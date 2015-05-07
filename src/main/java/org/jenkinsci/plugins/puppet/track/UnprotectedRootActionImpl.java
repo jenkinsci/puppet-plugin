@@ -1,7 +1,7 @@
 package org.jenkinsci.plugins.puppet.track;
 
 import hudson.Extension;
-import hudson.model.RootAction;
+import hudson.model.UnprotectedRootAction;
 import hudson.util.HttpResponses;
 import jenkins.model.Jenkins;
 import org.jenkinsci.plugins.puppet.track.report.PuppetReport;
@@ -17,7 +17,7 @@ import java.io.IOException;
  * @author Kohsuke Kawaguchi
  */
 @Extension
-public class RootActionImpl implements RootAction {
+public class UnprotectedRootActionImpl implements UnprotectedRootAction {
     public String getIconFileName() {
         return null;
     }
@@ -42,7 +42,7 @@ public class RootActionImpl implements RootAction {
         return HttpResponses.ok();
     }
 
-    public static RootActionImpl get() {
-        return Jenkins.getInstance().getExtensionList(RootAction.class).get(RootActionImpl.class);
+    public static UnprotectedRootActionImpl get() {
+        return Jenkins.getInstance().getExtensionList(UnprotectedRootAction.class).get(UnprotectedRootActionImpl.class);
     }
 }
