@@ -25,31 +25,60 @@ public class PuppetEvent {
             return "undefined content from '#{currentvalue}'"
             return "content changed '#{currentvalue}' to '#{newvalue}'"
          */
-        if (message.startsWith("defined content as"))
-            return extractChecksum(1);
-        if (message.startsWith("undefined content from "))
-            return null;
-        if (message.startsWith("content changed"))
-            return extractChecksum(3);
+        String ret = null;
 
-        LOGGER.fine("Unexpected message: "+message);
-        return null;
+        if (message.startsWith("defined content as")) {
+            ret = extractChecksum(1);
+        } else if (message.startsWith("undefined content from ")) {
+            ret = null;
+        } else if (message.startsWith("content changed")) {
+            ret = extractChecksum(3);
+        } else if(message.startsWith("audit change: previously recorded value")) {
+        	ret = extractAuditChecksum(10);
+        } else if(message.startsWith("audit change: newly-recorded value")) {
+        	ret = extractAuditChecksum(4);
+        }
+
+        LOGGER.fine("Message: " + message);
+        LOGGER.fine("Extracted: " + ret);
+
+        return ret;
     }
 
     public String getOldChecksum() {
-        if (message.startsWith("defined content as"))
-            return null;
-        if (message.startsWith("undefined content from "))
-            return extractChecksum(1);
-        if (message.startsWith("content changed"))
-            return extractChecksum(1);
+    	String ret = null;
 
-        LOGGER.fine("Unexpected message: "+message);
-        return null;
+        if (message.startsWith("defined content as")) {
+            ret = null;
+        } else if (message.startsWith("undefined content from ")) {
+            ret = extractChecksum(1);
+        } else if (message.startsWith("content changed")) {
+            ret = extractChecksum(1);
+        } else if(message.startsWith("audit change: previously recorded value")) {
+        	ret = extractAuditChecksum(5);
+        } else if(message.startsWith("audit change: newly-recorded value")) {
+        	ret = null;
+        }
+
+        LOGGER.fine("Message: " + message);
+        LOGGER.fine("Extracted: " + ret);
+
+        return ret;
     }
 
     private String extractChecksum(int index) {
         String[] t = message.split("\'");
+        String v = t[index];
+        if (v.startsWith("{md5}")) {
+            return v.substring(5);
+        } else {
+            LOGGER.fine("Expected to find {md5} but got "+v);
+            return null;    // failed to parse
+        }
+    }
+
+    private String extractAuditChecksum(int index) {
+        String[] t = message.split(" ");
         String v = t[index];
         if (v.startsWith("{md5}")) {
             return v.substring(5);
