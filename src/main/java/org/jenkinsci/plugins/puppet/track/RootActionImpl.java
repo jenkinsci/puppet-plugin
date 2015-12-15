@@ -9,6 +9,7 @@ import org.kohsuke.stapler.HttpResponse;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.interceptor.RequirePOST;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,13 +42,27 @@ public class RootActionImpl implements RootAction {
     public HttpResponse doReport(StaplerRequest req) throws IOException {
         LOGGER.log(Level.FINE, "Process report");
         // TODO: stapler YAML support
-
-        PuppetReport.load(req.getReader()).process();
-
+        LOGGER.log(Level.FINE, "Puppet plugin has received a report from {0}", req.getRemoteAddr());
+        try {
+            BufferedReader bufferedreader = req.getReader();
+            if (bufferedreader!=null) {
+                PuppetReport puppetReport = PuppetReport.load(bufferedreader);
+                puppetReport.process();
+            } else {
+                LOGGER.log(Level.WARNING, "Ignoring empty PuppetReport sent by {0}", req.getRemoteAddr());
+            }
+        } catch (IOException e)  {
+            LOGGER.log(Level.WARNING, String.format("PuppetReport error loading report sent by %s", req.getRemoteAddr()), e);
+            throw new IOException();
+        } catch (NullPointerException e)  {
+            LOGGER.log(Level.WARNING, String.format("PuppetReport error loading report sent by %s", req.getRemoteAddr()), e);
+        }
         return HttpResponses.ok();
     }
 
     public static RootActionImpl get() {
         return Jenkins.getInstance().getExtensionList(RootAction.class).get(RootActionImpl.class);
     }
+
+    private static final Logger LOGGER = Logger.getLogger(RootActionImpl.class.getName());
 }
