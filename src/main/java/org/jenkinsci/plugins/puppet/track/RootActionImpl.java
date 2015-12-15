@@ -21,7 +21,6 @@ import java.util.logging.Logger;
  */
 @Extension
 public class RootActionImpl implements RootAction {
-    private final static Logger LOGGER = Logger.getLogger(RootActionImpl.class.getName());
 
     public String getIconFileName() {
         return null;
