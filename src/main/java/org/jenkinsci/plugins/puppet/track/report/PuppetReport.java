@@ -105,4 +105,13 @@ public class PuppetReport {
 
         return new Yaml(c);
     }
+
+    @Override
+    public String toString() {
+        return "PuppetReport{" +
+                "host='" + host + '\'' +
+                ", environment='" + environment + '\'' +
+                ", time='" + time + '\'' +
+                '}';
+    }
 }
