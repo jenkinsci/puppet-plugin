@@ -28,4 +28,11 @@ class PuppetEventTest {
         assert ev.newChecksum==null
         assert ev.oldChecksum=="261ed8dadd135f991a611b8ebb88a9fd"
     }
+
+    @Test
+    void md5tracked() {
+        def ev = new PuppetEvent(message:"{md5}808480f0ffd870fe9af90c94d060e744")
+        assert ev.newChecksum=="808480f0ffd870fe9af90c94d060e744"
+        assert ev.oldChecksum==null
+    }
 }
