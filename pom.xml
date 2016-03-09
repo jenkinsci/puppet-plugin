@@ -11,6 +11,13 @@
   <version>1.2-SNAPSHOT</version>
   <packaging>hpi</packaging>
 
+  <developers>
+    <developer>
+      <id>fbelzunc</id>
+      <name>Felix Belzunce Arcos</name>
+    </developer>
+  </developers>
+
   <!-- get every artifact through repo.jenkins-ci.org, which proxies all the artifacts that we need -->
   <repositories>
     <repository>
